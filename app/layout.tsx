@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Plus_Jakarta_Sans, Inter, JetBrains_Mono } from 'next/font/google'
+import Script from 'next/script'
 import './globals.css'
 
 const plusJakarta = Plus_Jakarta_Sans({
@@ -54,6 +55,9 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const adsenseId = process.env.NEXT_PUBLIC_ADSENSE_ID
+  const enableAds = process.env.NEXT_PUBLIC_ENABLE_ADS === 'true'
+
   return (
     <html
       lang="en"
@@ -61,6 +65,14 @@ export default function RootLayout({
     >
       <body className="font-body bg-brand-50 text-gray-900 antialiased">
         {children}
+        {enableAds && adsenseId && (
+          <Script
+            async
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseId}`}
+            crossOrigin="anonymous"
+            strategy="afterInteractive"
+          />
+        )}
       </body>
     </html>
   )
