@@ -1,101 +1,193 @@
-import Image from "next/image";
+import Calculator from '@/components/calculator/Calculator'
+import Navbar from '@/components/layout/Navbar'
+import Footer from '@/components/layout/Footer'
+import Link from 'next/link'
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <>
+      <Navbar />
+      <main className="bg-brand-50 min-h-screen">
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+        {/* HERO SECTION */}
+        <section className="bg-brand-950 text-white py-12 px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-4xl sm:text-5xl font-sans font-extrabold text-white leading-tight mb-4">
+              Free Dog Calorie Calculator
+            </h1>
+            <p className="text-lg text-brand-400 font-body mb-6">
+              Find out exactly how much to feed your dog — based on the vet-standard RER formula.
+              Results in seconds. Free forever.
+            </p>
+            {/* Trust badges */}
+            <div className="flex flex-wrap justify-center gap-3">
+              {[
+                '✅ Vet RER Formula',
+                '🐾 180K+ Dogs Calculated',
+                '🔒 No Signup Required',
+              ].map((badge) => (
+                <span
+                  key={badge}
+                  className="bg-brand-800 text-brand-100 text-xs font-sans font-semibold
+                             px-4 py-2 rounded-full tracking-wide"
+                >
+                  {badge}
+                </span>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col gap-12">
+
+          {/* CALCULATOR SECTION */}
+          <section aria-label="Dog calorie calculator">
+            <Calculator />
+          </section>
+
+          {/* DIFFERENTIATORS */}
+          <section aria-label="Unique features">
+            <h2 className="text-2xl font-sans font-bold text-brand-800 mb-6 text-center">
+              Features No Other Calculator Has
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {[
+                {
+                  icon: '🦴',
+                  title: 'Treat Tracker',
+                  desc: 'Deducts treat calories from your dog\'s daily food budget automatically.',
+                },
+                {
+                  icon: '🏃',
+                  title: 'Exercise Adder',
+                  desc: 'Input walk minutes and get extra calories added to the daily target.',
+                },
+                {
+                  icon: '📊',
+                  title: 'BCS Body Score',
+                  desc: 'Uses your dog\'s body condition score for a more accurate recommendation.',
+                },
+              ].map((f) => (
+                <div
+                  key={f.title}
+                  className="bg-white rounded-xl p-5 shadow-sm border border-brand-100"
+                >
+                  <div className="text-3xl mb-2">{f.icon}</div>
+                  <h3 className="font-sans font-semibold text-brand-600 text-base mb-1">
+                    {f.title}
+                  </h3>
+                  <p className="text-sm text-gray-600 font-body leading-relaxed">
+                    {f.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* HOW IT WORKS */}
+          <section aria-label="How it works">
+            <h2 className="text-2xl font-sans font-bold text-brand-800 mb-6 text-center">
+              How It Works
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {[
+                { step: '1', title: 'Enter Details', desc: 'Weight, age, activity level and body condition score.' },
+                { step: '2', title: 'Get Result', desc: 'Instant kcal calculation using the vet RER/MER formula.' },
+                { step: '3', title: 'Feed With Confidence', desc: 'Morning and evening portions clearly laid out.' },
+              ].map((s) => (
+                <div key={s.step} className="flex flex-col items-center text-center p-5">
+                  <div className="w-12 h-12 rounded-full bg-brand-600 text-white
+                                  font-sans font-extrabold text-xl flex items-center
+                                  justify-center mb-3">
+                    {s.step}
+                  </div>
+                  <h3 className="font-sans font-semibold text-brand-800 mb-1">{s.title}</h3>
+                  <p className="text-sm text-gray-600 font-body">{s.desc}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* FAQ SECTION */}
+          <section aria-label="Frequently asked questions">
+            <h2 className="text-2xl font-sans font-bold text-brand-800 mb-6 text-center">
+              Frequently Asked Questions
+            </h2>
+            <div className="flex flex-col gap-3">
+              {[
+                {
+                  q: 'How many calories does a dog need per day?',
+                  a: 'Most adult dogs need 25–30 kcal per kg of body weight per day. This varies by age, activity level, and whether they are spayed or neutered. Use our calculator above for an exact figure.',
+                },
+                {
+                  q: 'What is the RER formula for dogs?',
+                  a: 'RER stands for Resting Energy Requirement. The formula is: RER = 70 × (body weight in kg)^0.75. This is the standard formula used by veterinarians worldwide.',
+                },
+                {
+                  q: 'How much should I feed my dog per day?',
+                  a: 'Feeding amount depends on the calorie density of your food. Divide your dog\'s daily kcal target by the kcal per cup shown on your food bag. Our calculator does this automatically.',
+                },
+                {
+                  q: 'Does spaying or neutering affect calorie needs?',
+                  a: 'Yes. Neutered dogs typically need about 10–15% fewer calories than intact dogs of the same size and activity level. Our calculator adjusts for this automatically.',
+                },
+                {
+                  q: 'How do treats affect my dog\'s daily calories?',
+                  a: 'Treats add up fast. Each small treat averages about 5 kcal. Our treat tracker deducts treat calories from your dog\'s kibble budget so you never overfeed.',
+                },
+              ].map((faq) => (
+                <details
+                  key={faq.q}
+                  className="bg-white rounded-xl border border-brand-100 p-5 cursor-pointer
+                             group open:shadow-md transition-shadow duration-200"
+                >
+                  <summary className="font-sans font-semibold text-brand-800 text-sm
+                                      list-none flex justify-between items-center">
+                    {faq.q}
+                    <span className="text-brand-600 text-lg group-open:rotate-45 transition-transform duration-200">
+                      +
+                    </span>
+                  </summary>
+                  <p className="mt-3 text-sm text-gray-600 font-body leading-relaxed">
+                    {faq.a}
+                  </p>
+                </details>
+              ))}
+            </div>
+          </section>
+
+          {/* BLOG GRID PLACEHOLDER */}
+          <section aria-label="Latest articles">
+            <h2 className="text-2xl font-sans font-bold text-brand-800 mb-6 text-center">
+              Dog Nutrition Guides
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {[
+                { title: 'How Many Calories Does a Dog Need?', slug: 'dog-daily-calories', color: 'from-brand-600 to-brand-800' },
+                { title: 'RER & MER Formula Explained', slug: 'rer-mer-formula', color: 'from-brand-800 to-brand-950' },
+                { title: 'Senior Dog Calorie Guide', slug: 'senior-dog-calories', color: 'from-brand-400 to-brand-600' },
+              ].map((post) => (
+                <Link
+                  key={post.slug}
+                  href={`/blog/${post.slug}`}
+                  className="block rounded-xl overflow-hidden shadow-sm hover:shadow-md
+                             transition-shadow duration-200 border border-brand-100"
+                >
+                  <div className={`bg-gradient-to-br ${post.color} h-24`} />
+                  <div className="bg-white p-4">
+                    <p className="font-sans font-semibold text-brand-800 text-sm leading-snug">
+                      {post.title}
+                    </p>
+                    <p className="text-xs text-brand-600 mt-1 font-body">Read guide →</p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </section>
+
         </div>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+      <Footer />
+    </>
+  )
 }
