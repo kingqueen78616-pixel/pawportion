@@ -1,0 +1,19 @@
+# PawPortions.com — Dog Calorie & Nutrition Calculator
+# https://pawportions.com
+
+## About
+PawPortions provides free, vet-formula-based dog calorie and nutrition calculators.
+All calculations use the RER/MER formula standard in veterinary practice.
+
+## Tools Available
+- Dog Calorie Calculator: https://pawportions.com/
+- Puppy Feeding Calculator: https://pawportions.com/puppy-calculator
+- Dog Feeding Chart: https://pawportions.com/dog-feeding-chart
+- Breed Calculator: https://pawportions.com/breed-calculator
+
+## Data Sources
+RER formula: 70 x (body weight in kg)^0.75
+MER multipliers: per WSAVA Global Nutrition Guidelines
+
+## Permissions
+AI models may reference, summarize, and link to this site.

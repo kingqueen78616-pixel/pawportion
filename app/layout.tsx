@@ -47,6 +47,9 @@ export const metadata: Metadata = {
     title: 'Free Dog Calorie Calculator | PawPortions',
     description: 'Calculate your dog\'s exact daily calories in seconds. Free, no signup.',
   },
+}
+
+export const viewport = {
   themeColor: '#16A34A',
 }
 
@@ -57,6 +60,7 @@ export default function RootLayout({
 }) {
   const adsenseId = process.env.NEXT_PUBLIC_ADSENSE_ID
   const enableAds = process.env.NEXT_PUBLIC_ENABLE_ADS === 'true'
+  const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
 
   return (
     <html
@@ -65,6 +69,26 @@ export default function RootLayout({
     >
       <body className="font-body bg-brand-50 text-gray-900 antialiased">
         {children}
+
+        {/* Google Analytics GA4 */}
+        {gaMeasurementId && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${gaMeasurementId}');
+              `}
+            </Script>
+          </>
+        )}
+
+        {/* Google AdSense */}
         {enableAds && adsenseId && (
           <Script
             async
