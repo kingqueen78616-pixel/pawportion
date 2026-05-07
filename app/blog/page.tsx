@@ -23,8 +23,9 @@ export default function BlogIndexPage() {
 
   return (
     <>
-      {/* Hero - Full Width */}
-      <section className="bg-brand-950 text-white py-10 px-4 -mt-6">
+      {/* Hero */}
+      <section className="bg-brand-950 text-white py-10 px-4
+                          -mx-4 sm:-mx-6 lg:-mx-8 -mt-6 mb-8">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-3xl sm:text-4xl font-sans font-extrabold
                          text-white mb-3">
@@ -37,30 +38,27 @@ export default function BlogIndexPage() {
         </div>
       </section>
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-
-        {posts.length === 0 ? (
-          <div className="text-center py-16">
-            <p className="text-gray-500 font-body">
-              Blog posts coming soon!
-            </p>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {posts.map((post, index) => (
-              <BlogCard
-                key={post.slug}
-                title={post.title}
-                description={post.description}
-                slug={post.slug}
-                date={post.date}
-                readTime={post.readTime}
-                color={CARD_COLORS[index % CARD_COLORS.length]}
-              />
-            ))}
-          </div>
-        )}
-      </div>
+      {posts.length === 0 ? (
+        <div className="text-center py-16">
+          <p className="text-gray-500 font-body">
+            Blog posts coming soon!
+          </p>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {posts.map((post, index) => (
+            <BlogCard
+              key={post.slug}
+              title={post.title}
+              description={post.description}
+              slug={post.slug}
+              date={post.date}
+              readTime={post.readTime}
+              color={CARD_COLORS[index % CARD_COLORS.length]}
+            />
+          ))}
+        </div>
+      )}
     </>
   )
 }
