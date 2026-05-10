@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Plus_Jakarta_Sans, Inter, JetBrains_Mono } from 'next/font/google'
 import Script from 'next/script'
+import CookieBanner from '@/components/ui/CookieBanner'
 import './globals.css'
 
 const plusJakarta = Plus_Jakarta_Sans({
@@ -69,6 +70,7 @@ export default function RootLayout({
     >
       <body className="font-body bg-brand-50 text-gray-900 antialiased">
         {children}
+        <CookieBanner />
 
         {/* Google Analytics GA4 */}
         {gaMeasurementId && (

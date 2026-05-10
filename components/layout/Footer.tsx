@@ -57,6 +57,7 @@ export default function Footer() {
                 { href: '/contact', label: 'Contact' },
                 { href: '/privacy-policy', label: 'Privacy Policy' },
                 { href: '/terms', label: 'Terms of Service' },
+                { href: '/privacy-policy#ccpa', label: 'Do Not Sell My Personal Information' },
               ].map((link) => (
                 <li key={link.href}>
                   <Link
