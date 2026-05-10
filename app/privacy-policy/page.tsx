@@ -104,7 +104,7 @@ export default function PrivacyPolicyPage() {
                 PawPortions displays advertisements served by Google
                 AdSense. Google AdSense uses cookies to serve ads based
                 on your prior visits to this website and other websites.
-                {"Google's"} use of advertising cookies enables it and its
+                Google{"'s"} use of advertising cookies enables it and its
                 partners to serve ads based on your visit to PawPortions
                 and other sites on the internet. You may opt out of
                 personalised advertising by visiting{' '}
@@ -189,7 +189,7 @@ export default function PrivacyPolicyPage() {
 
             <section>
               <h2 className="font-sans font-bold text-brand-800 text-xl">
-                9. {"Children's"} Privacy
+                9. Children{"'s"} Privacy
               </h2>
               <p className="text-gray-700 leading-relaxed">
                 PawPortions is not directed at children under the age of
