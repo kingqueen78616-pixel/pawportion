@@ -2,6 +2,7 @@ import Calculator from '@/components/calculator/Calculator'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import Link from 'next/link'
+import MultiDogManager from '@/components/calculator/MultiDogManager'
 
 export default function HomePage() {
   return (
@@ -43,6 +44,17 @@ export default function HomePage() {
           {/* CALCULATOR SECTION */}
           <section aria-label="Dog calorie calculator">
             <Calculator />
+          </section>
+
+          {/* MULTI-DOG SECTION */}
+          <section aria-label="Multi-dog household mode">
+            <h2 className="text-2xl font-sans font-bold text-brand-800 mb-2 text-center">
+              My Dogs — Multi-Dog Household Mode
+            </h2>
+            <p className="text-center text-gray-600 font-body mb-8">
+              Calculate calories for up to 3 dogs in one session
+            </p>
+            <MultiDogManager />
           </section>
 
           {/* DIFFERENTIATORS */}
