@@ -1,6 +1,5 @@
 import { notFound } from 'next/navigation'
 import { MDXRemote } from 'next-mdx-remote/rsc'
-import remarkGfm from 'remark-gfm'
 import { getPostBySlug, getAllPosts, getRelatedPosts } from '@/lib/blog'
 import BlogCard from '@/components/blog/BlogCard'
 import AdUnit from '@/components/ads/AdUnit'
@@ -13,10 +12,9 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>
+  params: { slug: string }
 }) {
-  const { slug } = await params
-  const post = getPostBySlug(slug)
+  const post = getPostBySlug(params.slug)
   if (!post) return {}
 
   return {
@@ -37,16 +35,15 @@ export async function generateMetadata({
   }
 }
 
-export default async function BlogPostPage({
+export default function BlogPostPage({
   params,
 }: {
-  params: Promise<{ slug: string }>
+  params: { slug: string }
 }) {
-  const { slug } = await params
-  const post = getPostBySlug(slug)
+  const post = getPostBySlug(params.slug)
   if (!post) notFound()
 
-  const relatedPosts = getRelatedPosts(slug, 2)
+  const relatedPosts = getRelatedPosts(params.slug, 2)
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -105,14 +102,7 @@ export default async function BlogPostPage({
       <div className="prose prose-green max-w-none font-body
                       prose-headings:font-sans prose-headings:text-brand-800
                       prose-a:text-brand-600 prose-strong:text-gray-900">
-        <MDXRemote
-          source={post.content}
-          options={{
-            mdxOptions: {
-              remarkPlugins: [remarkGfm],
-            },
-          }}
-        />
+        <MDXRemote source={post.content} />
       </div>
 
       {/* Ad slot after para 5 */}
