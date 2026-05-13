@@ -82,7 +82,7 @@ export default function MultiDogManager() {
       {dogs.map((dog) => (
         <div
           key={dog.id}
-          className={`flex flex-col gap-6 ${activeDogId === dog.id ? 'block' : 'hidden'}`}
+          className={`flex-col gap-6 ${activeDogId === dog.id ? 'flex' : 'hidden'}`}
         >
           <div className="bg-white rounded-xl shadow-sm border border-brand-100 p-6">
             <Input
