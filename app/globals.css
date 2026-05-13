@@ -1,6 +1,20 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-brand-50: #F0FDF4;
+  --color-brand-100: #DCFCE7;
+  --color-brand-400: #4ADE80;
+  --color-brand-600: #16A34A;
+  --color-brand-800: #155724;
+  --color-brand-950: #0D3321;
+
+  --font-sans: var(--font-plus-jakarta), system-ui, sans-serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), monospace;
+
+  --min-height-ad-leaderboard: 90px;
+  --min-height-ad-rect: 280px;
+}
 
 :root {
   --brand: #16A34A;
