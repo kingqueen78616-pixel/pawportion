@@ -2,6 +2,7 @@ import Calculator from '@/components/calculator/Calculator'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import Link from 'next/link'
+import MultiDogManager from '@/components/calculator/MultiDogManager'
 
 export default function HomePage() {
   return (
@@ -43,6 +44,17 @@ export default function HomePage() {
           {/* CALCULATOR SECTION */}
           <section aria-label="Dog calorie calculator">
             <Calculator />
+          </section>
+
+          {/* MULTI-DOG SECTION */}
+          <section aria-label="Multi-dog household mode">
+            <h2 className="text-2xl font-sans font-bold text-brand-800 mb-2 text-center">
+              My Dogs — Multi-Dog Household Mode
+            </h2>
+            <p className="text-center text-gray-600 font-body mb-8">
+              Calculate calories for up to 3 dogs in one session
+            </p>
+            <MultiDogManager />
           </section>
 
           {/* DIFFERENTIATORS */}
@@ -186,6 +198,78 @@ export default function HomePage() {
           </section>
 
         </div>
+
+        {/* JSON-LD Schemas */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'SoftwareApplication',
+              'name': 'Dog Calorie Calculator',
+              'applicationCategory': 'HealthApplication',
+              'operatingSystem': 'Web',
+              'offers': {
+                '@type': 'Offer',
+                'price': '0',
+                'priceCurrency': 'USD',
+              },
+              'description': 'Free dog calorie calculator using the RER/MER veterinary formula',
+              'url': 'https://pawportions.com',
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'FAQPage',
+              'mainEntity': [
+                {
+                  '@type': 'Question',
+                  'name': 'How many calories does a dog need per day?',
+                  'acceptedAnswer': {
+                    '@type': 'Answer',
+                    'text': 'Most adult dogs need 25-30 kcal per kg of body weight per day. Use our free calculator above for an exact figure based on your dog\'s weight, age, and activity level.',
+                  },
+                },
+                {
+                  '@type': 'Question',
+                  'name': 'What is the RER formula for dogs?',
+                  'acceptedAnswer': {
+                    '@type': 'Answer',
+                    'text': 'RER stands for Resting Energy Requirement. The formula is RER = 70 x (body weight in kg)^0.75. This is the standard formula used by veterinarians worldwide to calculate dog calorie needs.',
+                  },
+                },
+                {
+                  '@type': 'Question',
+                  'name': 'How much should I feed my dog per day?',
+                  'acceptedAnswer': {
+                    '@type': 'Answer',
+                    'text': 'Divide your dog\'s daily kcal target by the kcal per cup shown on your food bag. Our calculator does this automatically and shows morning and evening portions in cups.',
+                  },
+                },
+                {
+                  '@type': 'Question',
+                  'name': 'Does spaying or neutering affect calorie needs?',
+                  'acceptedAnswer': {
+                    '@type': 'Answer',
+                    'text': 'Yes. Neutered dogs need approximately 10-15% fewer calories than intact dogs of the same size and activity level. Our calculator adjusts for this automatically.',
+                  },
+                },
+                {
+                  '@type': 'Question',
+                  'name': 'How do treats affect my dog\'s daily calories?',
+                  'acceptedAnswer': {
+                    '@type': 'Answer',
+                    'text': 'Each small treat averages about 5 kcal. Our treat tracker deducts treat calories from your dog\'s daily kibble budget automatically so you never overfeed.',
+                  },
+                },
+              ],
+            }),
+          }}
+        />
       </main>
       <Footer />
     </>
