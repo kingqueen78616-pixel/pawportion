@@ -22,7 +22,7 @@ export default function BreedCalculatorPage() {
       <main className="bg-brand-50 min-h-screen">
 
         {/* Hero */}
-        <section className="bg-brand-950 text-white py-10 px-4">
+        <section className="bg-brand-950 text-white py-6 px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-3xl sm:text-4xl font-sans font-extrabold text-white mb-3">
               Dog Food Calculator by Breed

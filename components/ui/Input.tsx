@@ -21,15 +21,17 @@ export default function Input({
 
   return (
     <div className="flex flex-col gap-1">
-      <label
-        htmlFor={inputId}
-        className="text-sm font-medium text-gray-700 font-body"
-      >
-        {label}
-        {props.required && (
-          <span className="text-red-600 ml-1" aria-hidden="true">*</span>
-        )}
-      </label>
+      {label && (
+        <label
+          htmlFor={inputId}
+          className="text-sm font-medium text-gray-700 font-body"
+        >
+          {label}
+          {props.required && (
+            <span className="text-red-600 ml-1" aria-hidden="true">*</span>
+          )}
+        </label>
+      )}
 
       <div className="relative flex items-center">
         <input

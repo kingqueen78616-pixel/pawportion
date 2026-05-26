@@ -24,7 +24,7 @@ export default function BlogIndexPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-brand-950 text-white py-10 px-4
+      <section className="bg-brand-950 text-white py-6 px-4
                           -mx-4 sm:-mx-6 lg:-mx-8 -mt-6 mb-8">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-3xl sm:text-4xl font-sans font-extrabold

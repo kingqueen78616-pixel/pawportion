@@ -106,10 +106,13 @@ export default function DogProfileForm({ onCalculate, isLoading }: DogProfileFor
 
       {/* Weight + unit toggle */}
       <div className="flex flex-col gap-1">
-        <div className="flex items-center justify-between">
-          <span className="text-sm font-medium text-gray-700 font-body">
-            Weight <span className="text-red-600 ml-1" aria-hidden="true">*</span>
-          </span>
+        <div className="flex items-center justify-between mb-1">
+          <label
+            htmlFor="weight-input"
+            className="text-sm font-medium text-gray-700 font-body"
+          >
+            Weight <span className="text-red-600" aria-hidden="true">*</span>
+          </label>
           <div className="flex gap-1">
             {(['kg', 'lbs'] as const).map(u => (
               <button
@@ -126,6 +129,7 @@ export default function DogProfileForm({ onCalculate, isLoading }: DogProfileFor
         </div>
         <Input
           label=""
+          id="weight-input"
           placeholder={unit === 'kg' ? 'e.g. 10' : 'e.g. 22'}
           value={displayWeight}
           onChange={e => handleWeightChange(e.target.value)}

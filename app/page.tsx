@@ -11,7 +11,7 @@ export default function HomePage() {
       <main className="bg-brand-50 min-h-screen">
 
         {/* HERO SECTION */}
-        <section className="bg-brand-950 text-white py-12 px-4">
+        <section className="bg-brand-950 text-white py-8 px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl sm:text-5xl font-sans font-extrabold text-white leading-tight mb-4">
               Free Dog Calorie Calculator
